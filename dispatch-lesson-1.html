@@ -688,7 +688,7 @@ function vocabBuildFilters() {
   const el = document.getElementById('vocabFilters');
   let html = `<button class="vocab-chip active" data-cat="all" onclick="vocabSetFilter('all')"><span class="vdot" style="background:var(--gold-rev)"></span>All</button>`;
   VOCAB_CATS.forEach(c => {
-    html += `<button class="vocab-chip" data-cat="${c.key}" onclick="vocabSetFilter('${c.key}')"><span class="vdot" style="background:${c.color}"></span>${c.emoji} ${c.label}</button>`;
+    html += `<button class="vocab-chip" data-cat="${c.key}" onclick="vocabSetFilter('${c.key}')"><span class="vdot" style="background:${c.color}"></span>${c.label}</button>`;
   });
   el.innerHTML = html;
 }
@@ -706,7 +706,7 @@ function vocabBuildDashboard() {
     const warnings = VOCAB_WARNINGS.filter(w => w.cat === cat.key);
     if (!items.length) return;
     html += `<div class="vocab-cat-block" data-cat="${cat.key}">
-      <div class="vocab-cat-head"><span class="vbar" style="background:${cat.color}"></span><span class="vname">${cat.emoji} ${cat.label}</span><span class="vcount">${items.length} item${items.length > 1 ? 's' : ''}</span></div>
+      <div class="vocab-cat-head"><span class="vbar" style="background:${cat.color}"></span><span class="vname">${cat.label}</span><span class="vcount">${items.length} item${items.length > 1 ? 's' : ''}</span></div>
       <div class="vocab-grid">`;
     items.forEach((item, i) => {
       const id = cat.key + '-' + i;
