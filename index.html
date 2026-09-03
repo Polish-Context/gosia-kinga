@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The English Class Dispatch &ndash; Gosia &amp; Kinga</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #f7f4ef;
+    --rust: #9C4A2E;
+    --gold: #C96A45;
+    --gold-rev: #D9835A;
+    --cream: #F5F2EC;
+    --dark: #0B211E;
+    --mid: #0F4D46;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background-color: var(--paper); color: var(--ink); font-family: 'Lato', sans-serif; font-size: 16px; line-height: 1.7; min-height: 100vh; }
+  .masthead { background-color: var(--dark); padding: 32px 40px 36px; position: relative; overflow: hidden; }
+  .masthead::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--gold-rev); }
+  .masthead-inner { max-width: 680px; margin: 0 auto; }
+  .masthead-logo { display: flex; align-items: center; gap: 14px; margin-bottom: 28px; }
+  .masthead-logo svg { width: 52px; height: 52px; flex-shrink: 0; display: block; }
+  .masthead-title { font-family: 'Poppins', sans-serif; font-size: clamp(32px, 5vw, 52px); font-weight: 700; color: #ffffff; line-height: 1.1; margin-bottom: 24px; letter-spacing: -0.01em; }
+  .masthead-title em { font-style: italic; color: var(--gold-rev); }
+  .definition-block { border-left: 2px solid var(--rust); padding-left: 20px; max-width: 480px; }
+  .definition-word { font-family: 'Poppins', sans-serif; font-size: 17px; font-weight: 600; color: #ffffff; letter-spacing: 0.03em; }
+  .definition-pron { font-family: 'Lato', sans-serif; font-size: 16px; color: #9a9080; margin-left: 6px; }
+  .definition-pos { font-family: 'Lato', sans-serif; font-size: 14px; font-style: italic; color: var(--gold-rev); margin-bottom: 6px; margin-top: 2px; }
+  .definition-text { font-family: 'Lato', sans-serif; font-size: 17px; color: #b0a898; line-height: 1.6; }
+  .definition-text + .definition-text { margin-top: 4px; }
+  .meta-bar { background-color: var(--rust); padding: 10px 40px; }
+  .meta-bar-inner { max-width: 680px; margin: 0 auto; display: flex; gap: 32px; align-items: center; flex-wrap: wrap; }
+  .meta-item { font-family: 'Lato', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.85); }
+  .meta-item span { color: rgba(255,255,255,0.5); margin-right: 6px; }
+  .body-wrap { max-width: 680px; margin: 0 auto; padding: 56px 40px 80px; }
+  .stats-row { display: flex; gap: 2px; margin-bottom: 48px; }
+  .stat-card { flex: 1; background: var(--cream); padding: 20px 24px; }
+  .stat-number { font-family: 'Poppins', sans-serif; font-size: 36px; font-weight: 700; color: var(--ink); line-height: 1; margin-bottom: 6px; }
+  .stat-label { font-family: 'Lato', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #9a8878; }
+  .intro { margin-bottom: 56px; padding-bottom: 48px; border-bottom: 1px solid var(--cream); }
+  .intro-kicker { font-family: 'Lato', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rust); margin-bottom: 16px; }
+  .intro-text { font-family: 'Lato', sans-serif; font-size: 17px; line-height: 1.85; color: var(--ink); }
+  .intro-text p + p { margin-top: 1.2em; }
+  .list-kicker { font-family: 'Lato', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rust); margin-bottom: 24px; }
+  .lesson-list { display: flex; flex-direction: column; gap: 12px; }
+  .lesson-card { background: #fff; border: 1px solid #ddd8d0; border-left: 4px solid var(--dark); padding: 20px 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
+  .lesson-card.unavailable { border-left-color: #ccc; opacity: 0.5; }
+  .lesson-meta { flex: 1; min-width: 200px; }
+  .lesson-number { font-family: 'Lato', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rust); margin-bottom: 4px; }
+  .lesson-topic { font-family: 'Lato', sans-serif; font-size: 16px; font-weight: 700; color: var(--dark); line-height: 1.3; margin-bottom: 4px; }
+  .lesson-date { font-family: 'Lato', sans-serif; font-size: 12px; color: #9a8878; font-weight: 300; }
+  .lesson-buttons { display: flex; gap: 10px; flex-shrink: 0; }
+  .btn { font-family: 'Lato', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 8px 16px; text-decoration: none; border-radius: 2px; white-space: nowrap; display: inline-flex; align-items: center; gap: 7px; }
+  .btn-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+  .btn-preclass { background: var(--gold); color: var(--dark); }
+  .btn-preclass:hover { background: #b25a3a; }
+  .btn-preclass .btn-dot { background: var(--dark); }
+  .btn-afterclass { background: var(--rust); color: #fff; }
+  .btn-afterclass:hover { background: #7a3a22; }
+  .btn-afterclass .btn-dot { background: #fff; }
+  .btn-disabled { background: rgba(150,140,130,0.08); border: 1px solid rgba(150,140,130,0.2); color: #9a8878; cursor: default; pointer-events: none; opacity: 0.5; }
+  .btn-disabled .btn-dot { background: #9a8878; }
+  .quizlet-card { background: var(--mid); border-radius: 3px; padding: 32px 36px; margin-bottom: 48px; display: flex; flex-direction: column; gap: 16px; }
+  .quizlet-kicker { font-family: 'Lato', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-rev); margin-bottom: 4px; }
+  .quizlet-card p { font-size: 16px; color: rgba(255,255,255,0.8); line-height: 1.6; }
+  .quizlet-btn { display: inline-block; background: var(--gold-rev); color: var(--dark); font-family: 'Lato', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 12px 24px; border-radius: 2px; text-decoration: none; align-self: flex-start; transition: background 0.15s; }
+  .quizlet-btn:hover { background: #b25a3a; }
+  .site-footer { background: var(--dark); padding: 32px 40px; text-align: center; border-top: 3px solid var(--gold-rev); }
+  .site-footer p { font-family: 'Lato', sans-serif; font-size: 15px; color: rgba(255,255,255,0.6); letter-spacing: 0.06em; }
+</style>
+</head>
+<body>
+<header class="masthead">
+  <div class="masthead-inner">
+    <div class="masthead-logo">
+      <svg viewBox="0 0 520 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Business English icon">
+        <g transform="translate(3,-21.5)">
+          <g stroke="#ffffff" stroke-width="24" stroke-linejoin="round">
+            <rect x="195" y="196" width="252" height="186" rx="46" fill="#C96A45"/>
+            <path d="M388,378 C400,428 410,454 420,472 C425,481 417,487 409,481 C376,455 340,418 314,380 Z" fill="#C96A45"/>
+          </g>
+          <rect x="195" y="196" width="252" height="186" rx="46" fill="#C96A45"/>
+          <path d="M388,378 C400,428 410,454 420,472 C425,481 417,487 409,481 C376,455 340,418 314,380 Z" fill="#C96A45"/>
+          <rect x="55" y="68" width="272" height="202" rx="46" fill="#F5F2EC"/>
+          <path d="M112,268 C100,318 90,344 80,362 C75,371 83,377 91,371 C124,345 160,308 186,270 Z" fill="#F5F2EC"/>
+          <circle cx="139" cy="169" r="17" fill="#0F4D46"/>
+          <circle cx="191" cy="169" r="17" fill="#0F4D46"/>
+          <circle cx="243" cy="169" r="17" fill="#0F4D46"/>
+          <circle cx="269" cy="300" r="17" fill="#F5F2EC"/>
+          <circle cx="321" cy="300" r="17" fill="#F5F2EC"/>
+          <circle cx="373" cy="300" r="17" fill="#F5F2EC"/>
+        </g>
+      </svg>
+      <div style="font-family:'Poppins',sans-serif; line-height:1.2;">
+        <div style="font-weight:700; font-size:15px; color:#F5F2EC;">BUSINESS ENGLISH</div>
+        <div style="font-weight:600; font-size:12px; color:#D9835A;">in the Polish Context</div>
+      </div>
+    </div>
+    <div class="masthead-title">The English Class<br><em>Dispatch</em></div>
+    <div class="definition-block">
+      <div><span class="definition-word">dispatch</span><span class="definition-pron">/d&#618;&#712;sp&aelig;t&#643;/</span></div>
+      <div class="definition-pos">noun</div>
+      <div class="definition-text">1. A message or report sent quickly to its destination &ndash; especially one sent by a journalist from abroad, or between military officers.</div>
+      <div class="definition-text">2. The act of sending someone or something promptly to a particular place.</div>
+    </div>
+  </div>
+</header>
+<div class="meta-bar">
+  <div class="meta-bar-inner">
+    <div class="meta-item"><span>Course</span>Business English in the Polish Context</div>
+    <div class="meta-item"><span>Since</span>September 2026</div>
+  </div>
+</div>
+<main class="body-wrap">
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-number">1</div>
+      <div class="stat-label">Lessons completed</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">27</div>
+      <div class="stat-label">Vocab entries covered</div>
+    </div>
+  </div>
+  <div class="quizlet-card">
+    <div class="quizlet-kicker">Your Quizlet Class</div>
+    <p>Your vocabulary is growing. After every lesson, new words and phrases are added to your Quizlet class. Go back, test yourself, and make them stick.</p>
+    <a class="quizlet-btn" href="[QUIZLET_CLASS_LINK]" target="_blank">Open your Quizlet class &rarr;</a>
+  </div>
+  <section class="intro">
+    <div class="intro-kicker">Welcome</div>
+    <div class="intro-text">
+      <p>After every lesson, the dispatch arrives here: the vocabulary from the session, each word or phrase with its Polish equivalent and an example sentence.</p>
+      <p>Below the vocabulary, stories with audio, built from the words and phrases from the lesson and using them naturally in context. Read and listen. The language will already feel familiar.</p>
+    </div>
+  </section>
+  <section>
+    <div class="list-kicker">All Lessons</div>
+    <div class="lesson-list">
+      <div class="lesson-card">
+        <div class="lesson-meta">
+          <p class="lesson-number">Lesson 1</p>
+          <p class="lesson-topic">Crossing Borders, Making an Impression</p>
+          <p class="lesson-date">2 September 2026</p>
+        </div>
+        <div class="lesson-buttons">
+          <a href="dispatch-lesson-1.html" class="btn btn-afterclass"><span class="btn-dot"></span>Dispatch</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="site-footer">
+  <p>Business English in the Polish Context &nbsp;&middot;&nbsp; September 2026</p>
+</footer>
+</body>
+</html>
