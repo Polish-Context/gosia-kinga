@@ -33,7 +33,7 @@
   .definition-pos { font-family: 'Lato', sans-serif; font-size: 14px; font-style: italic; color: var(--gold-rev); margin-bottom: 6px; margin-top: 2px; }
   .definition-text { font-family: 'Lato', sans-serif; font-size: 17px; color: #b0a898; line-height: 1.6; }
   .definition-text + .definition-text { margin-top: 4px; }
-  .meta-bar { background-color: var(--rust); padding: 10px 40px; display: flex; gap: 8px 32px; align-items: center; flex-wrap: wrap; }
+  .meta-bar { background-color: var(--rust); padding: 10px 40px; display: flex; gap: 32px; align-items: center; flex-wrap: wrap; }
   .meta-item { font-family: 'Lato', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.85); }
   .meta-item span { color: rgba(255,255,255,0.5); margin-right: 6px; }
   .back-nav { background: var(--gold); padding: 14px 40px; }
@@ -81,11 +81,11 @@
   .vocab-cat-head span.vname { font-size: 12.5px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-rev); }
   .vocab-cat-head span.vcount { font-size: 12.5px; color: rgba(255,255,255,0.35); }
   .vocab-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; }
-  .vflip-card { perspective: 1200px; min-height: 190px; cursor: pointer; }
+  .vflip-card { perspective: 1200px; height: 190px; cursor: pointer; }
   .vflip-card:focus-visible, .match-item:focus-visible, .audio-play-btn:focus-visible, .audio-progress:focus-visible { outline: 2px solid var(--gold-rev); outline-offset: 3px; }
-  .vflip-inner { display: grid; position: relative; width: 100%; min-height: 190px; transition: transform 0.5s cubic-bezier(.4,.2,.2,1); transform-style: preserve-3d; }
+  .vflip-inner { position: relative; width: 100%; height: 100%; transition: transform 0.5s cubic-bezier(.4,.2,.2,1); transform-style: preserve-3d; }
   .vflip-card.vflipped .vflip-inner { transform: rotateY(180deg); }
-  .vflip-face { grid-area: 1 / 1; position: relative; min-height: 190px; backface-visibility: hidden; border-radius: 4px; padding: 18px 18px 16px; display: flex; flex-direction: column; justify-content: space-between; }
+  .vflip-face { position: absolute; inset: 0; backface-visibility: hidden; border-radius: 4px; padding: 18px 18px 16px; display: flex; flex-direction: column; justify-content: space-between; }
   .vflip-front { background: rgba(255,255,255,0.05); border-top: 3px solid var(--vcat-color, var(--gold-rev)); }
   .vflip-back { background: rgba(255,255,255,0.1); border-top: 3px solid var(--vcat-color, var(--gold-rev)); transform: rotateY(180deg); }
   .vterm { font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 20px; color: var(--gold-rev); line-height: 1.25; }
@@ -313,31 +313,26 @@
   <div class="exercise-section">
     <div class="section-label">Practice</div>
     <h2>Exercise 1 &ndash; Complete the Phrase</h2>
-    <p class="exercise-intro">Each definition below has one key word missing. Type the missing word in the box and click <em>Check</em>. Green means correct, red means try again.</p>
+    <p class="exercise-intro">Each item below has a word or phrase missing. Type it in the box and click <em>Check</em>. Green means correct, red means try again.</p>
     <div class="gapfill-item" id="ex1-1">
       <div class="exercise-number">1</div>
-      <div class="exercise-def">The preposition that comes before a date: We are going live <input class="gap-input" data-answer="on" placeholder="______"> 5 October.</div>
+      <div class="exercise-def">The preposition that follows <em>open</em>, <em>start</em> or <em>begin</em> when a noun comes next: to open <input class="gap-input" data-answer="with" placeholder="______"> questions</div>
       <button class="check-btn" onclick="checkGap('ex1-1')">Check</button><span class="gap-feedback" id="fb-ex1-1"></span>
     </div>
     <div class="gapfill-item" id="ex1-2">
       <div class="exercise-number">2</div>
-      <div class="exercise-def">The preposition that follows <em>open</em>, <em>start</em> or <em>begin</em> when a noun comes next: to open <input class="gap-input" data-answer="with" placeholder="______"> questions</div>
+      <div class="exercise-def">A phrase used in deadlines, meaning by the end of the working day: by close of <input class="gap-input" data-answer="business|play" placeholder="______"> on Friday</div>
       <button class="check-btn" onclick="checkGap('ex1-2')">Check</button><span class="gap-feedback" id="fb-ex1-2"></span>
     </div>
     <div class="gapfill-item" id="ex1-3">
       <div class="exercise-number">3</div>
-      <div class="exercise-def">The formal phrase for the end of the working day, used in deadlines: by close of <input class="gap-input" data-answer="business" placeholder="______"> on Friday</div>
+      <div class="exercise-def">Complete the sentence: I <input class="gap-input" data-answer="have been|'ve been|’ve been|i have been|i've been|i’ve been" placeholder="______"> cooperating with the Lisbon team since April.</div>
       <button class="check-btn" onclick="checkGap('ex1-3')">Check</button><span class="gap-feedback" id="fb-ex1-3"></span>
     </div>
     <div class="gapfill-item" id="ex1-4">
       <div class="exercise-number">4</div>
-      <div class="exercise-def">The informal British version of the same deadline, which borrows a word from sport: by the end of <input class="gap-input" data-answer="play" placeholder="______"> on Friday</div>
+      <div class="exercise-def">Complete the sentence: We prepared the presentation so that our partners <input class="gap-input" data-answer="could|would|might" placeholder="______"> get to know us better.</div>
       <button class="check-btn" onclick="checkGap('ex1-4')">Check</button><span class="gap-feedback" id="fb-ex1-4"></span>
-    </div>
-    <div class="gapfill-item" id="ex1-5">
-      <div class="exercise-number">5</div>
-      <div class="exercise-def">How do you say 19 October aloud? on the <input class="gap-input" data-answer="nineteenth" placeholder="______"> of October</div>
-      <button class="check-btn" onclick="checkGap('ex1-5')">Check</button><span class="gap-feedback" id="fb-ex1-5"></span>
     </div>
   </div>
 
@@ -428,6 +423,25 @@
     <div class="choice-item" id="ch8">
       <div class="choice-stem">A manager asks you about a decision that nobody has told you about. Which reply is more suitable?</div>
       <div class="choice-options"><button class="choice-btn" data-correct="0" onclick="checkChoice('ch8', this)">How would I know that?</button><button class="choice-btn" data-correct="1" onclick="checkChoice('ch8', this)">I haven't been informed about that yet.</button></div>
+    </div>
+  </div>
+
+  <div class="exercise-section">
+    <div class="section-label">Practice</div>
+    <h2>Exercise 5 &ndash; Dates</h2>
+    <p class="exercise-intro">Choose the correct sentence in the first two items. In the last item, type the missing words and click <em>Check</em>.</p>
+    <div class="choice-item" id="dt1">
+      <div class="choice-stem">Which sentence is correct?</div>
+      <div class="choice-options"><button class="choice-btn" data-correct="0" onclick="checkChoice('dt1', this)">We had the introductory meeting 11 September.</button><button class="choice-btn" data-correct="1" onclick="checkChoice('dt1', this)">We had the introductory meeting on 11 September.</button></div>
+    </div>
+    <div class="choice-item" id="dt2">
+      <div class="choice-stem">Which sentence is correct?</div>
+      <div class="choice-options"><button class="choice-btn" data-correct="1" onclick="checkChoice('dt2', this)">We are going live on the fifth of October.</button><button class="choice-btn" data-correct="0" onclick="checkChoice('dt2', this)">We are going live on five October.</button></div>
+    </div>
+    <div class="gapfill-item" id="dt3">
+      <div class="exercise-number">3</div>
+      <div class="exercise-def">Write the date 4 October as you would say it aloud: The Lisbon team arrives <input class="gap-input" style="width:100%;max-width:340px" data-answer="on the fourth of october|on october the fourth|on october fourth" placeholder="____________">.</div>
+      <button class="check-btn" onclick="checkGap('dt3')">Check</button><span class="gap-feedback" id="fb-dt3"></span>
     </div>
   </div>
 </main>
@@ -567,7 +581,7 @@ function checkChoice(id, btn) {
 <script>
 const VOCAB_CATS = [{"key": "meetings", "label": "Meetings and Team Activities", "color": "#E0954A"}, {"key": "getting", "label": "Getting to Know One Another", "color": "#4AA8E0"}, {"key": "projects", "label": "Cooperation and Projects", "color": "#7DBB8C"}, {"key": "dates", "label": "Dates", "color": "#E0C24A"}, {"key": "presentations", "label": "Presentations", "color": "#BC9DE0"}, {"key": "expressions", "label": "Useful Expressions", "color": "#E04A8C"}, {"key": "as", "label": "As: Two Meanings", "color": "#E0524A"}, {"key": "deadlines", "label": "Deadlines", "color": "#4AE0A8"}];
 const VOCAB_DATA = [{"cat": "meetings", "term": "an introductory meeting", "gloss": "spotkanie zapoznawcze / spotkanie wprowadzające", "ex": "We had an introductory meeting with the Indian team."}, {"cat": "meetings", "term": "a photo session", "gloss": "sesja zdjęciowa", "ex": "We organised a photo session for the team."}, {"cat": "meetings", "term": "after-work activities", "gloss": "aktywności po pracy", "ex": "We planned some after-work activities."}, {"cat": "meetings", "term": "to join a meeting", "gloss": "dołączyć do spotkania", "ex": "I was invited late, so I couldn't join the meeting."}, {"cat": "getting", "term": "to get to know someone better", "gloss": "lepiej kogoś poznać", "ex": "The aim of the presentation was to get to know our partners better."}, {"cat": "getting", "term": "so that", "gloss": "aby / żeby", "ex": "We prepared a special presentation so that our partners in India could get to know us better."}, {"cat": "getting", "term": "each other / one another", "gloss": "nawzajem / wzajemnie", "ex": "We haven't seen each other in person yet."}, {"cat": "projects", "term": "have been cooperating with someone since…", "gloss": "współpracować z kimś od…", "ex": "I have been cooperating with the Indian team since April."}, {"cat": "projects", "term": "to go live", "gloss": "zacząć działać / wystartować", "ex": "We are going live on 5 October."}, {"cat": "projects", "term": "to be active in a country", "gloss": "prowadzić działalność w danym kraju", "ex": "The presentation shows which countries we are active in."}, {"cat": "dates", "term": "on + date", "gloss": "przed datą używamy przyimka on", "ex": "We met on 11 September."}, {"cat": "presentations", "term": "to open with questions", "gloss": "rozpocząć od pytań", "ex": "You could open with questions."}, {"cat": "presentations", "term": "to begin by doing something", "gloss": "zacząć od zrobienia czegoś", "ex": "You could begin by telling the audience about a recent conversation."}, {"cat": "presentations", "term": "to start with a personal story", "gloss": "zacząć od osobistej historii", "ex": "You could start with a personal story."}, {"cat": "presentations", "term": "after I finish the presentation", "gloss": "po tym, jak skończę prezentację", "ex": "You can ask me questions after I finish the presentation."}, {"cat": "expressions", "term": "Sorry I'm late.", "gloss": "Przepraszam za spóźnienie.", "ex": "Sorry I'm late. My previous meeting ran over."}, {"cat": "expressions", "term": "Don't be shy.", "gloss": "Nie wstydźcie się / Nie krępujcie się.", "ex": "Don't be shy. You can ask me questions."}, {"cat": "expressions", "term": "Bless you!", "gloss": "Na zdrowie!", "ex": "We say Bless you! when someone sneezes."}, {"cat": "expressions", "term": "May God bless you.", "gloss": "Niech Bóg cię błogosławi.", "ex": "May God bless you and your family."}, {"cat": "expressions", "term": "How would I know that?", "gloss": "Skąd miałabym to wiedzieć?", "ex": "How would I know that? Nobody told me."}, {"cat": "as", "term": "as (= in the way that)", "gloss": "tak jak", "ex": "Please prepare the document as we discussed."}, {"cat": "as", "term": "as (= because)", "gloss": "ponieważ / jako że", "ex": "As we were running out of time, we finished the meeting."}, {"cat": "deadlines", "term": "by close of business on Friday", "gloss": "do końca dnia roboczego w piątek", "ex": "Please send me the presentation by close of business on Friday."}, {"cat": "deadlines", "term": "by the end of play on Friday", "gloss": "do końca dnia w piątek (nieformalnie, głównie BrE)", "ex": "Please send me the final version by the end of play on Friday."}];
-const VOCAB_NOTES = [{"cat": "getting", "html": "<strong>Each other</strong> can refer to two people or a larger group. <strong>One another</strong> is also possible and is slightly more formal. There is no strict numerical distinction.<br><em style=\"opacity:.7\">Each other może odnosić się do dwóch osób lub większej grupy. One another jest również możliwe i nieco bardziej formalne. Nie ma między nimi ścisłego rozróżnienia liczbowego.</em>"}, {"cat": "dates", "html": "<strong>Say:</strong><br>on the <strong>fifth</strong> of October<br>on the <strong>eleventh</strong> of September<br><em style=\"opacity:.7\">Datę odczytujemy z liczebnikiem porządkowym: on the fifth of October, on the eleventh of September.</em>"}, {"cat": "presentations", "html": "<strong>Patterns</strong><br>open / start / begin <strong>with</strong> + noun<br>open / start / begin <strong>by</strong> + verb-ing"}, {"cat": "expressions", "html": "<strong>May God bless you</strong> is a formal blessing, not an ordinary business expression.<br><em style=\"opacity:.7\">To formalne błogosławieństwo, a nie zwykłe wyrażenie używane w komunikacji biznesowej.</em>"}, {"cat": "expressions", "html": "<strong>How would I know that?</strong> can sound sharp, especially with a manager or client.<br><em style=\"opacity:.7\">To pytanie może zabrzmieć ostro, zwłaszcza w rozmowie z przełożonym lub klientem.</em>"}];
+const VOCAB_NOTES = [{"cat": "getting", "html": "<strong>Each other</strong> can refer to two people or a larger group. <strong>One another</strong> is also possible and is slightly more formal. There is no strict numerical distinction.<br><em style=\"opacity:.7\">Each other może odnosić się do dwóch osób lub większej grupy. One another jest również możliwe i nieco bardziej formalne. Nie ma między nimi ścisłego rozróżnienia liczbowego.</em>"}, {"cat": "dates", "html": "<strong>Say:</strong><br>on the <strong>fifth</strong> of October<br>on the <strong>eleventh</strong> of September<br><em style=\"opacity:.7\">Datę odczytujemy z liczebnikiem porządkowym: on the fifth of October, on the eleventh of September.</em>"}, {"cat": "presentations", "html": "<strong>Patterns</strong><br>open / start / begin <strong>with</strong> + noun<br>open / start / begin <strong>by</strong> + verb-ing"}, {"cat": "expressions", "html": "<strong>May God bless you</strong> is a formal blessing, not an ordinary business expression.<br><em style=\"opacity:.7\">To formalne błogosławieństwo, a nie zwykłe wyrażenie używane w komunikacji biznesowej.</em>"}, {"cat": "expressions", "html": "<strong>How would I know that?</strong> can sound sharp, especially with a manager or client.<br><em style=\"opacity:.7\">To pytanie może zabrzmieć ostro, zwłaszcza w rozmowie z przełożonym lub klientem.</em>"}, {"cat": "deadlines", "html": "<strong>The two parts combine freely:</strong> close of business, close of play, end of business and end of play all mean the same thing. <strong>Play</strong> is less formal and used mainly in British English.<br><em style=\"opacity:.7\">Obie części można łączyć: close of business, close of play, end of business i end of play znaczą to samo. Play jest mniej formalne i używane głównie w brytyjskim angielskim.</em>"}];
 const VOCAB_WARNINGS = [{"cat": "meetings", "label": "Common Mistake", "line": "join to a meeting", "fix": "✓ join a meeting", "extra": ""}, {"cat": "presentations", "label": "Common Mistake", "line": "after I will finish the presentation", "fix": "✓ after I finish the presentation", "extra": "After <strong>after</strong>, use a present tense, not <strong>will</strong>, for future meaning.<br><em>Po after używamy czasu teraźniejszego, a nie will, gdy mówimy o przyszłości.</em>"}];
 function vocabBuildStats() {
   const el = document.getElementById('vocabStats');
